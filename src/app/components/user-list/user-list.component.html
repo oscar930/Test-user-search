@@ -1,0 +1,54 @@
+
+<mat-toolbar color="primary" class="header">
+  <span>PRUEBA TECNICA</span>
+</mat-toolbar>
+<div class="search-container">
+    <app-user-search (search)="searchUsers($event)"></app-user-search>
+</div>
+
+
+<div class="user-table-container">
+  <table mat-table [dataSource]="users()" class="mat-elevation-z8">
+
+    <!-- Avatar Column -->
+    <ng-container matColumnDef="avatar">
+      <mat-header-cell *matHeaderCellDef> Avatar </mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <img [src]="user.avatar_url" width="50" height="50" class="avatar">
+      </mat-cell>
+    </ng-container>
+
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <a [routerLink]="['/user', user.login]" class="username-link">
+          {{ user.login }}
+        </a>
+      </mat-cell>
+    </ng-container>
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{ user.id }} </mat-cell>
+    </ng-container>
+
+    <!-- Header and Row Definitions -->
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </table>
+</div>
+
+
+<!--
+ <ul>
+  <li *ngFor="let user of users()">
+    <a [routerLink]="['/user', user.login]">
+      <img [src]="user.avatar_url" width="50">
+      {{ user.login }} (ID: {{ user.id }})
+    </a>
+  </li>
+</ul>
+-->

@@ -1,1 +1,5 @@
-<p>user-detail works!</p>
+<div  class="user-detail">
+    <h2>{{ user()?.login }}</h2>
+    <img [src]="user()?.avatar_url" class="avatar-large" />
+    <p><a [href]="user()?.html_url" target="_blank">Ver en GitHub</a></p>
+  </div>

@@ -1,0 +1,9 @@
+.user-detail {
+    text-align: center;
+  }
+  
+  .avatar-large {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
